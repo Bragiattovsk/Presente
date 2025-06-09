@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }, 1000);
 
-    const datingStartDate = new Date('2020-06-10T00:00:00'); // Data do namoro
-    const marriageDate = new Date('2021-06-10T00:00:00');    // Data do casamento
+    const datingStartDate = new Date('2021-06-10T00:00:00'); // Data do namoro
+    const marriageDate = new Date('2022-06-10T00:00:00');    // Data do casamento
 
     const daysDating = document.getElementById('days-dating');
     const hoursDating = document.getElementById('hours-dating');

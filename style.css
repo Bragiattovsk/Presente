@@ -130,7 +130,8 @@ section {
 
 /* Galeria de Fotos */
 #photo-gallery .img-fluid {
-    height: 140px; /* Altura fixa para consistência em mobile */
+    height: 240px; /* Altura fixa para consistência em mobile */
+    max-width: 150px;
     object-fit: cover; /* Garante que a imagem preencha o espaço */
     border: 2px solid var(--accent-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -215,3 +216,61 @@ body::before {
         height: 200px; /* Altura maior para desktops */
     }
 }
+
+/* Corações animados no fundo */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: floatHearts 10s linear infinite;
+    opacity: 0; /* começar invisível */
+    animation-fill-mode: backwards; /* animação inicia ocultando */
+    filter: drop-shadow(0 0 2px #b03a6a);
+}  
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes floatHearts {
+    0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0;
+    }
+    30% {
+    opacity: 0.8;
+    }
+    100% {
+    transform: translateY(-10vh) rotate(45deg);
+    opacity: 0;
+    }
+}  
