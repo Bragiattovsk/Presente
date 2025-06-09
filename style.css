@@ -1,0 +1,217 @@
+/* Definição de variáveis de cor e fonte */
+:root {
+    --primary-bg: #1a1a2e; /* Fundo principal escuro */
+    --secondary-bg: #16213e; /* Elementos de fundo secundário */
+    --text-color: #e0e0e0; /* Cor do texto claro */
+    --highlight-color: #e94560; /* Cor de destaque (vermelho/rosa) */
+    --accent-color: #0f3460; /* Cor de sotaque (azul escuro) */
+    --font-family: 'Dancing Script', cursive; /* Fonte despojada */
+    --font-secundary: 'Lora', serif;
+}
+
+/* Estilos globais e Bootstrap overrides */
+body {
+    font-family: var(--font-family) !important; /* Força a fonte despojada */
+    background-color: var(--primary-bg) !important;
+    color: var(--text-color) !important;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cores customizadas para Bootstrap */
+.bg-dark { background-color: var(--accent-color) !important; }
+.text-highlight { color: var(--highlight-color) !important; }
+.border-highlight { border-color: var(--highlight-color) !important; }
+.text-light-50 { color: rgba(255, 255, 255, 0.7) !important; } /* Para o texto do footer */
+
+
+/* Animação de Carregamento */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid var(--highlight-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Seções Principais */
+section {
+    background-color: var(--secondary-bg) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4) !important;
+    text-align: center;
+    opacity: 0; /* Para animação de entrada */
+    transform: translateY(30px); /* Para animação de entrada */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Animação para seções */
+.animate__animated {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.animate__fadeInUp {
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeInDown {
+    animation-name: fadeInDown;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Timers */
+.timer-section {
+    border: 2px solid var(--highlight-color) !important;
+    box-shadow: 0 0 20px var(--highlight-color) !important; /* Efeito de brilho */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timer-section:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 30px var(--highlight-color) !important; /* Brilho maior no hover */
+}
+
+.timer-display {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-color);
+    /* Bootstrap's 'row' and 'justify-content-center' handle most of this */
+}
+
+.timer-unit {
+    background-color: var(--accent-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.2em; /* Tamanho da fonte ajustado para o conteúdo do span */
+}
+
+.timer-unit:hover {
+    background-color: var(--highlight-color);
+    transform: scale(1.05);
+}
+
+/* Galeria de Fotos */
+#photo-gallery .img-fluid {
+    height: 140px; /* Altura fixa para consistência em mobile */
+    object-fit: cover; /* Garante que a imagem preencha o espaço */
+    border: 2px solid var(--accent-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#photo-gallery .img-fluid:hover {
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6) !important;
+    border-color: var(--highlight-color) !important;
+}
+
+/* Mensagem Especial */
+.custom-message {
+    background-color: rgba(15, 52, 96, 0.3); /* Um toque transparente do azul escuro */
+    border-radius: 5px;
+    font-family: var(--font-secundary);
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+/* Animações de fundo (Partículas/Estrelas) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 1px, var(--primary-bg) 1px),
+                radial-gradient(circle, transparent 1px, var(--primary-bg) 1px);
+    background-size: 20px 20px;
+    opacity: 0.1; /* Sutil */
+    animation: background-move 60s linear infinite;
+    z-index: -1;
+}
+
+.btn-romantic {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-romantic:hover {
+    background-color: #c2185b;
+}
+
+@keyframes background-move {
+    from {
+        background-position: 0 0, 10px 10px;
+    }
+    to {
+        background-position: 200px 200px, 210px 210px;
+    }
+}
+
+
+/* Media Queries (Bootstrap lida com a maioria, mas alguns ajustes finos) */
+@media (min-width: 768px) { /* md breakpoint do Bootstrap */
+    .timer-unit {
+        font-size: 1.5em; /* Aumenta a fonte para tablets/desktops */
+    }
+    #photo-gallery .img-fluid {
+        height: 180px; /* Altura maior para tablets */
+    }
+}
+
+@media (min-width: 992px) { /* lg breakpoint do Bootstrap */
+    .timer-unit {
+        font-size: 1.8em; /* Aumenta ainda mais para desktops */
+        padding: 0.8rem 1.5rem;
+    }
+    #photo-gallery .img-fluid {
+        height: 200px; /* Altura maior para desktops */
+    }
+}

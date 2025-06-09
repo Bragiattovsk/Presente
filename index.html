@@ -3,60 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Amor: [Seu Nome] & [Nome da Esposa]</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <title>Nosso Amor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="loading-overlay">
         <div class="spinner"></div>
     </div>
 
-    <header>
-        <h1>Nosso Amor</h1>
+    <header class="text-center py-5 bg-dark">
+        <h1 class="display-3 text-highlight fw-bold animate__animated animate__fadeInDown">Nosso Amor</h1>
     </header>
 
-    <main>
-        <section id="dating-timer" class="timer-section">
-            <h2>Desde o Namoro</h2>
-            <div class="timer-display">
-                <span id="days-dating"></span> dias
-                <span id="hours-dating"></span> horas
-                <span id="minutes-dating"></span> minutos
-                <span id="seconds-dating"></span> segundos
+    <main class="container my-5">
+        <section id="dating-timer" class="timer-section p-4 mb-4 animate__animated animate__fadeInUp">
+            <h2 class="h3 text-highlight mb-4">Desde o Namoro</h2>
+            <div class="timer-display row justify-content-center g-2">
+                <span id="days-dating" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
+                <span id="hours-dating" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
+                <span id="minutes-dating" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
+                <span id="seconds-dating" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
             </div>
         </section>
 
-        <section id="marriage-timer" class="timer-section">
-            <h2>Desde o Casamento</h2>
-            <div class="timer-display">
-                <span id="days-marriage"></span> dias
-                <span id="hours-marriage"></span> horas
-                <span id="minutes-marriage"></span> minutos
-                <span id="seconds-marriage"></span> segundos
+        <section id="marriage-timer" class="timer-section p-4 mb-4 animate__animated animate__fadeInUp">
+            <h2 class="h3 text-highlight mb-4">Desde o Casamento</h2>
+            <div class="timer-display row justify-content-center g-2">
+                <span id="days-marriage" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
+                <span id="hours-marriage" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
+                <span id="minutes-marriage" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
+                <span id="seconds-marriage" class="col-6 col-sm-3 col-md-auto timer-unit text-center p-2 rounded-3 mx-1"></span>
             </div>
         </section>
 
-        <section id="photo-gallery">
-            <h2>Nossas Memórias</h2>
-            <div class="gallery-grid">
-                <img src="foto1.jpg" alt="Nossa foto 1">
-                <img src="foto2.jpg" alt="Nossa foto 2">
-                <img src="foto3.jpg" alt="Nossa foto 3">
-                <img src="foto4.jpg" alt="Nossa foto 4">
+        <section id="photo-gallery" class="p-4 mb-4 animate__animated animate__fadeInUp">
+            <h2 class="h3 text-highlight mb-4">Nossas Memórias</h2>
+            <div class="gallery-grid row row-cols-2 row-cols-md-4 g-3">
+                <div class="col"><img src="images/casamento1.jpeg" class="img-fluid rounded shadow-sm" alt="Nossa foto 1"></div>
+                <div class="col"><img src="images/coquinha.jpeg" class="img-fluid rounded shadow-sm" alt="Nossa foto 2"></div>
+                <div class="col"><img src="images/casamento2.jpeg" class="img-fluid rounded shadow-sm" alt="Nossa foto 3"></div>
+                <div class="col"><img src="images/final-ano.jpeg" class="img-fluid rounded shadow-sm" alt="Nossa foto 4"></div>
             </div>
         </section>
 
-        <section id="message-section">
-            <h2>Uma Mensagem para Você</h2>
-            <p>Minha linda esposa, cada dia ao seu lado é um presente. Sou grato(a) por cada momento, desde o nosso primeiro "sim" até o nosso "para sempre". Você é a minha maior aventura e o meu porto seguro. Feliz aniversário de casamento! Eu te amo!</p>
+        <section id="message-section" class="p-4 mb-4 animate__animated animate__fadeInUp">
+            <h2 class="h3 text-highlight mb-4">Uma Mensagem para Você</h2>
+            <p class="lead text-start border-start border-highlight ps-3 py-2 custom-message">
+                Minha linda esposa, cada dia ao seu lado é um presente. Sou grato por cada momento, desde o nosso primeiro encontro. Você é a minha maior aventura e o meu porto seguro. Feliz aniversário de casamento monene! Eu te amo!
+            </p>
         </section>
+        <div class="text-center my-4">
+            <button id="playMusicBtn" class="btn btn-romantic">
+                <span class="me-2">❤️ Tocar nossa música</span>
+                <i class="bi bi-music-note-beamed"></i>
+            </button>
+            <audio id="loveSong">
+                <source src="audio/nossa-musica.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; [Seu Nome] - Nosso Amor</p>
+    <footer class="text-center py-4 bg-accent text-light-50">
+        <p class="mb-0">&copy;Nosso Amor</p>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
