@@ -126,20 +126,24 @@ section h2 {
     font-weight: bold;
     color: var(--text-color);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 1rem; /* Espaço entre os elementos */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 0.5rem; /* Espaço entre os elementos, mais compacto para mobile */
     padding: 1rem 0;
 }
 
 .timer-display span {
     background-color: var(--accent-color);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem; /* Ajuste o padding para mobile */
     border-radius: 8px;
-    min-width: 90px;
+    min-width: 70px; /* Reduz a largura mínima para mobile */
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    box-sizing: border-box;
+    flex: 1 1 auto; /* Permite que os itens cresçam e encolham, mas com uma base automática */
 }
 
 .timer-display span:hover {
@@ -222,7 +226,25 @@ body::before {
 }
 
 
-/* Mobile First - Media Queries para telas maiores */
+/* Media Queries para telas maiores (Desktop-first para sobrescrever o mobile) */
+
+/* Smartphone (até 599px - manter as configurações mobile) */
+@media (max-width: 599px) {
+    .timer-display {
+        font-size: 1.5em; /* Fonte um pouco menor para economizar espaço */
+        gap: 0.4rem; /* Espaço ainda mais compacto */
+    }
+    .timer-display span {
+        min-width: 65px; /* Ajuste fino do min-width */
+        padding: 0.4rem 0.6rem; /* Padding menor */
+        /* Flexbox mais agressivo para mobile: */
+        flex: 1 1 45%; /* Cada item tenta ocupar cerca de 45% da largura, permitindo 2 por linha */
+        /* Isso faz com que eles quebrem de forma mais previsível */
+    }
+}
+
+
+/* Tablet (600px e acima) */
 @media (min-width: 600px) {
     header h1 {
         font-size: 4em;
@@ -230,12 +252,13 @@ body::before {
 
     .timer-display {
         font-size: 2.2em;
-        gap: 1rem 2rem;
+        gap: 1rem 2rem; /* Mais espaço em telas maiores */
     }
 
     .timer-display span {
-        min-width: 120px;
+        min-width: 120px; /* Largura mínima maior */
         padding: 0.7rem 1.2rem;
+        flex: 0 0 auto; /* Permite que o flexbox gerencie sem base de porcentagem */
     }
 
     #photo-gallery .gallery-grid {
@@ -243,6 +266,7 @@ body::before {
     }
 }
 
+/* Desktop (900px e acima) */
 @media (min-width: 900px) {
     header h1 {
         font-size: 5em;
